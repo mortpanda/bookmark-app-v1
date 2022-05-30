@@ -6,11 +6,18 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NbThemeModule, NbLayoutModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
-
+import { NavbarComponent } from './shared/navbar/navbar.component';
+import { LandingComponent } from './landing/landing.component';
+import {DockModule} from 'primeng/dock';
+import { MenuModule } from 'primeng/menu';
+import { MenubarModule } from 'primeng/menubar';
+import { ToolbarModule } from 'primeng/toolbar';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NavbarComponent,
+    LandingComponent
   ],
   imports: [
     BrowserModule,
@@ -18,7 +25,11 @@ import { NbEvaIconsModule } from '@nebular/eva-icons';
     BrowserAnimationsModule,
     NbThemeModule.forRoot({ name: 'dark' }),
     NbLayoutModule,
-    NbEvaIconsModule
+    NbEvaIconsModule,
+    DockModule,
+    MenuModule,
+    ToolbarModule,
+    MenubarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
