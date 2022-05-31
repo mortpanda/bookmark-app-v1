@@ -26,11 +26,23 @@
 
   }
 </style>
-
+<ng-template #bigScreen>
 <div id="pageDiv">
+  <app-navbar></app-navbar>
   <app-toolbar></app-toolbar>
   <div id="mainContainer" >
-    <app-navbar></app-navbar>
+    
     <router-outlet></router-outlet>
   </div>
 </div>
+
+</ng-template>
+
+<!-- ************************* SMALL SCREEN ************************* -->
+<!-- ************************* SMALL SCREEN ************************* -->
+<ng-template [ngIf]="smallScreen" [ngIfElse]="bigScreen">
+  <div id="pageDiv">
+  <app-smallscreen-nav></app-smallscreen-nav>
+  <router-outlet></router-outlet>
+</div>
+</ng-template>

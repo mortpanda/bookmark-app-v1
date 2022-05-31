@@ -18,7 +18,6 @@ export class MenulistService {
     {
       label: 'ログアウト',
       icon: "assets/img/logout_white.png",
-      style: 'font-size: 1.5rem;',
       command: () => {
         this.Logout();
       }

@@ -1,0 +1,14 @@
+.smallSCLogo{
+  width:40vw!important;
+}
+
+#smallNavbar{
+  .p-menubar{
+  background: transparent!important;
+  -webkit-backdrop-filter: blur(100px) !important;
+  backdrop-filter: blur(200px) !important;
+  border-top: 2px solid black!important;
+  border-left: 2px solid black!important;
+  border-right: 1px solid black!important;
+}
+}
