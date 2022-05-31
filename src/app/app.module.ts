@@ -16,6 +16,7 @@ import { ImageModule } from 'primeng/image';
 import { SpeedDialModule } from 'primeng/speeddial';
 import { PanelModule } from 'primeng/panel';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { ToolbarComponent } from './shared/toolbar/toolbar.component';
 
 
 
@@ -24,6 +25,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     AppComponent,
     NavbarComponent,
     LandingComponent,
+    ToolbarComponent,
 
   ],
   imports: [

@@ -8,7 +8,7 @@ import { PrimeNGConfig } from 'primeng/api';
   encapsulation: ViewEncapsulation.None
 })
 export class AppComponent {
-  title = 'bookmark-app-v1';
+  title = 'Bookmark App Version 1';
 
   constructor(private primengConfig: PrimeNGConfig) {}
 
