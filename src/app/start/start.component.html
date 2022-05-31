@@ -1,0 +1,27 @@
+<ng-template #bigScreen>
+  <!-- <div class="startMainDiv" fxLayout="columns wrap" fxLayoutAlign="center center"> -->
+  <div class="startMainDiv" fxLayout="columns wrap" fxLayoutAlign="center">
+    <!-- <div class="startSubContainer" fxLayout="columns wrap" fxLayoutAlign="center">   
+      <div class="cardContent"> -->
+    <p-speedDial [model]="appNav" radius="130" type="circle" showIcon="pi pi-bars" hideIcon="pi pi-times"
+      buttonClassName="p-button-outlined" id="menuSpeedDial"></p-speedDial>
+    <!-- </div>
+
+  </div> -->
+
+  </div>
+</ng-template>
+<!-- ************************* SMALL SCREEN ************************* -->
+<!-- ************************* SMALL SCREEN ************************* -->
+
+
+<ng-template [ngIf]="smallScreen" [ngIfElse]="bigScreen">
+
+  <div class="smallStartDiv" fxLayout="columns wrap" fxLayoutAlign="center">
+    <div fxLayout="columns wrap" fxLayoutAlign="center">
+      <p-speedDial [model]="appNav" radius="120" type="circle" showIcon="pi pi-bars" hideIcon="pi pi-times"
+        buttonClassName="p-button-outlined" id="SmallmenuSpeedDial"></p-speedDial>
+    </div>
+  </div>
+
+</ng-template>

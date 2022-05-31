@@ -18,7 +18,8 @@ import { PanelModule } from 'primeng/panel';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ToolbarComponent } from './shared/toolbar/toolbar.component';
 import { SmallscreenNavComponent } from './shared/smallscreen-nav/smallscreen-nav.component';
-
+import { StartComponent } from './start/start.component';
+import {CardModule} from 'primeng/card';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { SmallscreenNavComponent } from './shared/smallscreen-nav/smallscreen-na
     LandingComponent,
     ToolbarComponent,
     SmallscreenNavComponent,
+    StartComponent,
 
   ],
   imports: [
@@ -45,7 +47,8 @@ import { SmallscreenNavComponent } from './shared/smallscreen-nav/smallscreen-na
     ImageModule,
     SpeedDialModule,
     PanelModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    CardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

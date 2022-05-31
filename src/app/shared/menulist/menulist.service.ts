@@ -1,11 +1,16 @@
 import { Injectable } from '@angular/core';
+import { OktaSDKAuthService } from '../okta/okta-auth.service';
+import { OktaConfigService } from '../okta/okta-config.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MenulistService {
 
-  constructor() { }
+  constructor(
+    private OktaSDKAuthService: OktaSDKAuthService,
+    private OktaConfigService: OktaConfigService,
+  ) { }
   
   menuItems = [
     {
@@ -26,12 +31,36 @@ export class MenulistService {
   ];
 
 
+  appNav = [
+    {
+      tooltipOptions: {
+        tooltipLabel: "Save Bookmark",
+        tooltipPosition: "top",
+      },
+      icon: 'pi pi-save',
+      style: 'font-size: 0.7rem',
+      command: () => {
+        this.GoHome();
+      }
+    },
+    {
+      tooltipOptions: {
+        tooltipLabel: "Bookmarks",
+        tooltipPosition: "top",
+      },
+      icon: 'pi pi-bookmark-fill',
+      style: 'font-size: 0.7rem',
+      command: () => {
+        this.GoHome();
+      }
+    },
+  ]
+
   async Logout() {
-    // this.OktaSDKAuthService.OktaSDKAuthClient.signOut();
+    this.OktaSDKAuthService.OktaSDKAuthClient.signOut();
   }
 
   async GoHome() {
-    alert('test')
-    // window.location.replace(this.OktaConfigService.strPostLogoutURL);
+    window.location.replace(this.OktaConfigService.strPostLogoutURL);
   }
 }

@@ -1,0 +1,76 @@
+.startMainDiv {
+  // border-style: dotted !important;
+  width: 100vw !important;
+  text-align: center !important;
+  height: 40vh !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
+}
+
+.smallStartDiv {
+  // border-style: dotted !important;
+  width: 100vw !important;
+  text-align: center !important;
+  height: 100vh !important;
+}
+
+#SmallmenuSpeedDial {
+  margin-top: 50px !important;
+  margin-left: -42.5px !important;
+  .p-speeddial {
+    .p-speeddial-button.p-button.p-button-icon-only {
+      width: 8rem !important;
+      height: 8rem !important;
+      border: 10px solid !important;
+    }
+  }
+  .p-speeddial-action {
+    color: #ffffff !important;
+    width: 6rem !important;
+    height: 6rem !important;
+    -webkit-backdrop-filter: blur(6px) !important;
+    backdrop-filter: blur(6px) !important;
+    background: transparent !important;
+    border: 5px solid !important;
+  }
+  .p-button.p-button-outlined {
+    color: #ffffff !important;
+  }
+}
+
+#menuSpeedDial {
+  .p-speeddial {
+    margin-left: -48px !important;
+  }
+}
+
+#menuSpeedDial {
+  .p-speeddial {
+    .p-speeddial-button.p-button.p-button-icon-only {
+      color: #ffffff !important;
+      width: 8rem !important;
+      height: 8rem !important;
+      border: 5px solid !important;
+    }
+  }
+}
+
+#menuSpeedDial {
+  .pi{
+   font-size: 40px!important; 
+  }
+  .p-element {
+    .p-speeddial-action {
+      color: #ffffff !important;
+      width: 6rem !important;
+      height: 6rem !important;
+      -webkit-backdrop-filter: blur(6px) !important;
+      backdrop-filter: blur(6px) !important;
+      background: transparent !important;
+      border: solid #ffffff;
+    }
+  }
+  
+}
