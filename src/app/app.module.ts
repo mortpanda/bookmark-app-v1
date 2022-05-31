@@ -21,8 +21,10 @@ import { SmallscreenNavComponent } from './shared/smallscreen-nav/smallscreen-na
 import { StartComponent } from './start/start.component';
 import {CardModule} from 'primeng/card';
 import { BookmarksComponent } from './bookmarks/bookmarks.component';
-
-
+import {MessagesModule} from 'primeng/messages';
+import {MessageModule} from 'primeng/message';
+import {ToastModule} from 'primeng/toast';
+import {MessageService} from 'primeng/api';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,9 +52,12 @@ import { BookmarksComponent } from './bookmarks/bookmarks.component';
     SpeedDialModule,
     PanelModule,
     FlexLayoutModule,
-    CardModule
+    CardModule,
+    MessagesModule,
+    MessageModule,
+    ToastModule,
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

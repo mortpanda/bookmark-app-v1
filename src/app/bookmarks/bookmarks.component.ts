@@ -6,6 +6,7 @@ import { OktaSDKAuthService } from '../shared/okta/okta-auth.service';
 import { OktaAuth } from '@okta/okta-auth-js'
 import { OktaConfigService } from "../shared/okta/okta-config.service";
 import { OktaApiService } from "../shared/okta/okta-api.service";
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-bookmarks',
@@ -22,12 +23,15 @@ export class BookmarksComponent implements OnInit {
   myUserID;
   myBookmarkDownloadUri;
   myAccessToken;
+  apiCallResponse;
+
   constructor(
     public OktaGetTokenService: OktaGetTokenService,
     public OktaSDKAuthService: OktaSDKAuthService,
     public OktaConfigService: OktaConfigService,
     private breakpointObserver: BreakpointObserver,
     private OktaApiService: OktaApiService,
+    private messageService: MessageService,
   ) {
     breakpointObserver.observe([
       Breakpoints.XSmall,
@@ -37,8 +41,6 @@ export class BookmarksComponent implements OnInit {
     });
   }
 
-
-  
   async ngOnInit() {
     this.strUserSession = await this.authService.isAuthenticated();
     console.log(this.strUserSession)
@@ -55,22 +57,33 @@ export class BookmarksComponent implements OnInit {
             window.location.replace(this.OktaConfigService.strPostLogoutURL);
           })
         this.strFullName = await this.strThisUser.name;
-        await console.log(this.strThisUser)
+        // await console.log(this.strThisUser)
         this.myUserID = await this.strThisUser.sub;
-        await console.log(this.myUserID);
+        // await console.log(this.myUserID);
 
         this.myAccessToken = await this.OktaGetTokenService.GetAccessToken()
         this.myBookmarkDownloadUri = await this.myAccessToken.claims.boomark_app_uri;
-        console.log(this.myBookmarkDownloadUri);
-
+        // console.log(this.myBookmarkDownloadUri);
         await this.GetBookmarks(this.myUserID, this.myBookmarkDownloadUri);
-          
+        switch (this.myBookmarkList.length) {
+          case 0: {
+            this.apiCallResponse = "User Validation FAILED!";
+            this.showError()
+
+            break;
+          }
+          default: {
+            this.apiCallResponse = "User Validation Successful";
+            this.showSuccess();
+            break;
+          }
+        }
+        console.log(this.apiCallResponse)
         break;
     }
   }
 
-
-  apiCallResponse;
+  myBookmarkList;
   async GetBookmarks(uid, url) {
     let requestBody;
     requestBody = {
@@ -78,8 +91,20 @@ export class BookmarksComponent implements OnInit {
     }
     let requestURI;
     requestURI = url;
-    this.apiCallResponse = this.OktaApiService.InvokeFlow(requestURI, requestBody);
-
+    this.myBookmarkList = await this.OktaApiService.InvokeFlow(requestURI, requestBody);
+    console.log(this.myBookmarkList)
   }
+
+  showSuccess() {
+    this.messageService.add({ severity: 'success', summary: 'Success', detail: this.apiCallResponse });
+  }
+
+  showError() {
+    this.messageService.add({ severity: 'error', summary: 'Error', detail: this.apiCallResponse });
+  }
+  onReject() {
+    this.messageService.clear('c');
+  }
+
 
 }

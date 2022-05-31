@@ -22,8 +22,8 @@ export class OktaGetTokenService {
   strUserName;
   async GetAccessToken() {
     const accessToken: AccessToken = await this.authService.tokenManager.get('accessToken') as AccessToken;
-    this.myAccessToken = accessToken;  
-    this.strUserName = this.myAccessToken.claims.sub;
+    this.myAccessToken = await accessToken;  
+    this.strUserName = await this.myAccessToken.claims.sub;
     return this.myAccessToken;
   }
 
