@@ -1,36 +1,33 @@
 import { Component, OnInit } from '@angular/core';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { OktaGetTokenService } from '../shared/okta/okta-get-token.service';
 import { ViewEncapsulation } from '@angular/core';
 import { OktaSDKAuthService } from '../shared/okta/okta-auth.service';
 import { OktaAuth } from '@okta/okta-auth-js'
 import { OktaConfigService } from "../shared/okta/okta-config.service";
-import { OktaWidgetService } from '../shared/okta/okta-widget.service';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Router, RouterModule } from '@angular/router';
-import { MenulistService } from '../shared/menulist/menulist.service';
-import { MenuItem } from 'primeng/api';
+import { OktaApiService } from "../shared/okta/okta-api.service";
 
 @Component({
-  selector: 'app-start',
-  templateUrl: './start.component.html',
-  styleUrls: ['./start.component.scss'],
+  selector: 'app-bookmarks',
+  templateUrl: './bookmarks.component.html',
+  styleUrls: ['./bookmarks.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class StartComponent implements OnInit {
+export class BookmarksComponent implements OnInit {
   public authService = new OktaAuth(this.OktaSDKAuthService.config);
   strUserSession;
   strThisUser;
   smallScreen: boolean;
   strFullName;
-  appNav : MenuItem[];
+  myUserID;
+  myBookmarkDownloadUri;
+  myAccessToken;
   constructor(
     public OktaGetTokenService: OktaGetTokenService,
     public OktaSDKAuthService: OktaSDKAuthService,
     public OktaConfigService: OktaConfigService,
-    public OktaWidgetService: OktaWidgetService,
     private breakpointObserver: BreakpointObserver,
-    private MenulistService:MenulistService,
-    private Router:Router,
+    private OktaApiService: OktaApiService,
   ) {
     breakpointObserver.observe([
       Breakpoints.XSmall,
@@ -38,11 +35,11 @@ export class StartComponent implements OnInit {
     ]).subscribe(result => {
       this.smallScreen = result.matches;
     });
-    this.appNav = this.MenulistService.appNav;
-   }
+  }
 
+
+  
   async ngOnInit() {
-    
     this.strUserSession = await this.authService.isAuthenticated();
     console.log(this.strUserSession)
     switch (this.strUserSession == true) {
@@ -56,18 +53,33 @@ export class StartComponent implements OnInit {
           .catch((err) => {
             console.log(err);
             window.location.replace(this.OktaConfigService.strPostLogoutURL);
-           })
-           this.strFullName = this.strThisUser.name;
-           console.log(this.strThisUser)
+          })
+        this.strFullName = await this.strThisUser.name;
+        await console.log(this.strThisUser)
+        this.myUserID = await this.strThisUser.sub;
+        await console.log(this.myUserID);
+
+        this.myAccessToken = await this.OktaGetTokenService.GetAccessToken()
+        this.myBookmarkDownloadUri = await this.myAccessToken.claims.boomark_app_uri;
+        console.log(this.myBookmarkDownloadUri);
+
+        await this.GetBookmarks(this.myUserID, this.myBookmarkDownloadUri);
+          
         break;
     }
-    
-
   }
 
-  // async GoToHome(){
-  //   await this.authService.closeSession();
-  //   this.Router.navigate(['/home']);
-  // }
+
+  apiCallResponse;
+  async GetBookmarks(uid, url) {
+    let requestBody;
+    requestBody = {
+      uid: uid,
+    }
+    let requestURI;
+    requestURI = url;
+    this.apiCallResponse = this.OktaApiService.InvokeFlow(requestURI, requestBody);
+
+  }
 
 }

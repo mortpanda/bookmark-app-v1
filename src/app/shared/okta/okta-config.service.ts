@@ -11,7 +11,7 @@ export class OktaConfigService {
   strBaseURI = 'https://kent-nagao-oie.oktapreview.com/';
   strRedirectURL = 'https://192.168.1.100:4200/bookmark-app-v1/start/';
   strClientID = '0oa46996crm3ouN1Z0x7';
-  strIssuer = 'https://kent-nagao-oie.oktapreview.com/oauth2/aus43qx0voWry89Go0x7/';
+  strIssuer = 'https://kent-nagao-oie.oktapreview.com/oauth2/aus46bulm7pblSxzC0x7/';
   strPostLogoutURL = 'https://192.168.1.100:4200/bookmark-app-v1/';
   strScope = ['openid', 'email', 'profile', 'address'];
   strResponseType = ['token', 'id_token'];

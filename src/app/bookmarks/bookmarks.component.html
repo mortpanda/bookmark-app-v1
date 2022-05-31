@@ -1,0 +1,11 @@
+<ng-template #bigScreen>
+  <div class="userName">{{strFullName}}</div>
+</ng-template>
+<!-- ************************* SMALL SCREEN ************************* -->
+<!-- ************************* SMALL SCREEN ************************* -->
+
+<ng-template [ngIf]="smallScreen" [ngIfElse]="bigScreen">
+</ng-template>
+
+<p>bookmarks works!</p>
+

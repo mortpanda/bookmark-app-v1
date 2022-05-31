@@ -20,6 +20,7 @@ import { ToolbarComponent } from './shared/toolbar/toolbar.component';
 import { SmallscreenNavComponent } from './shared/smallscreen-nav/smallscreen-nav.component';
 import { StartComponent } from './start/start.component';
 import {CardModule} from 'primeng/card';
+import { BookmarksComponent } from './bookmarks/bookmarks.component';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import {CardModule} from 'primeng/card';
     ToolbarComponent,
     SmallscreenNavComponent,
     StartComponent,
+    BookmarksComponent,
 
   ],
   imports: [

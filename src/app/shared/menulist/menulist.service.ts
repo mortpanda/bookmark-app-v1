@@ -14,6 +14,11 @@ export class MenulistService {
   
   menuItems = [
     {
+      label: 'メニュー',
+      icon: "assets/img/menu_white.png",
+      routerLink: ['/start']
+    },
+    {
       label: 'ホーム',
       icon: "assets/img/home_white.png",
       command: () => {
@@ -39,9 +44,7 @@ export class MenulistService {
       },
       icon: 'pi pi-save',
       style: 'font-size: 0.7rem',
-      command: () => {
-        this.GoHome();
-      }
+      routerLink: ['/bookmark']
     },
     {
       tooltipOptions: {
@@ -50,9 +53,7 @@ export class MenulistService {
       },
       icon: 'pi pi-bookmark-fill',
       style: 'font-size: 0.7rem',
-      command: () => {
-        this.GoHome();
-      }
+      routerLink: ['/bookmark']
     },
   ]
 
