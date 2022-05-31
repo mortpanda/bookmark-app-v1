@@ -17,3 +17,8 @@ $nb-themes: nb-register-theme((
   // color-primary-900: #091c7a,
 
 ), dark, dark);
+
+
+@import url("../node_modules/primeng/resources/themes/md-dark-indigo/theme.css");
+@import url("../node_modules/primeng/resources/primeng.min.css");
+@import url("../node_modules/primeicons/primeicons.css");

@@ -5,6 +5,7 @@ import { MenuModule } from 'primeng/menu';
 import { MenuItem } from 'primeng/api';
 import { MenulistService } from '../menulist/menulist.service';
 import { PrimeIcons} from 'primeng/api';
+import { PrimeNGConfig } from 'primeng/api';
 
 @Component({
   selector: 'app-navbar',
@@ -13,11 +14,15 @@ import { PrimeIcons} from 'primeng/api';
   encapsulation: ViewEncapsulation.None
 })
 export class NavbarComponent implements OnInit {
+  
   smallScreen: boolean;
-  mainMenu = [];
+  mainMenu : MenuItem[];
+  
   constructor(
     private breakpointObserver: BreakpointObserver,
     private MenulistService: MenulistService,
+    private primengConfig: PrimeNGConfig,
+
   ) {
     breakpointObserver.observe([
       Breakpoints.XSmall,
@@ -25,10 +30,10 @@ export class NavbarComponent implements OnInit {
     ]).subscribe(result => {
       this.smallScreen = result.matches;
     });
-    this.mainMenu = this.MenulistService.ItemsMenu;
+    this.mainMenu = this.MenulistService.menuItems;
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
   }
 
 }

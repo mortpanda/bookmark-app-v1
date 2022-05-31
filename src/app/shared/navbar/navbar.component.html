@@ -1,5 +1,6 @@
-<p-dock [model]="mainMenu" position="bottom">
+<p-dock [model]="mainMenu" position="left" id="mainNavbar">
   <ng-template pTemplate="item" let-item>
-      <img [src]="item.icon" [alt]="item.label" width="100%">
+      <img [src]="item.icon" [alt]="item.label" width="50%">
   </ng-template>
 </p-dock>
+

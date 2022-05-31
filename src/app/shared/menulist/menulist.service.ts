@@ -7,23 +7,23 @@ export class MenulistService {
 
   constructor() { }
   
-  ItemsMenu = [
+  menuItems = [
     {
       label: 'ホーム',
-      icon: "pi pi-home",
-      // style: 'font-size: 1.5rem',
+      icon: "assets/img/home_white.png",
       command: () => {
         this.GoHome();
       }
     },
     {
       label: 'ログアウト',
-      icon: "pi pi-sign-out",
-      // style: 'font-size: 1.5rem;',
+      icon: "assets/img/logout_white.png",
+      style: 'font-size: 1.5rem;',
       command: () => {
         this.Logout();
       }
     },
+
   ];
 
 
@@ -32,6 +32,7 @@ export class MenulistService {
   }
 
   async GoHome() {
+    alert('test')
     // window.location.replace(this.OktaConfigService.strPostLogoutURL);
   }
 }
