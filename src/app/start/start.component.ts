@@ -63,11 +63,10 @@ export class StartComponent implements OnInit {
            console.log(this.strThisUser)
         break;
     }
-    
 
   }
 
-  
+ 
 
   // async GoToHome(){
   //   await this.authService.closeSession();
