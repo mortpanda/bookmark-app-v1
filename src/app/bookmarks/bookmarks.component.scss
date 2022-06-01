@@ -1,3 +1,43 @@
-.bookmarkMainDiv{
-  
+.bookmarkMainDiv {
+  // border-style: dotted;
+  color: #ffffff;
+  font-family: "ABCWhyte Book", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu",
+    "Cantarell", "Helvetica Neue", sans-serif !important;  
+
 }
+
+.bookmarkContainer {
+  // border-style: dotted;
+ width: 80vw !important;
+ height:auto!important;
+ overflow: none!important;
+}
+
+
+
+.bookmarkTable:hover {
+  background: grey !important;
+  color: black !important;
+}
+
+.bookmarkTable::selection {
+  background: grey !important;
+  color: black !important;
+}
+
+
+
+a:link { color: #FFFFFF; }
+a:visited { color: #FFFFFF; }
+a:hover { color: #FFFFFF; }
+a:active { color: #FFFFFF; }
+
+#bookmarkTable{
+.p-datatable-scrollable{
+   .p-datatable-wrapper {
+  
+  overflow: auto;
+  overflow-x: hidden;
+  
+   }
+}}

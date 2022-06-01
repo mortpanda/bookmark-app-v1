@@ -1,20 +1,89 @@
 <ng-template #bigScreen>
-  <div class="userName">{{strFullName}}</div>
+    <div class="userName">{{strFullName}}</div>
 
-  <div class="bookmarkMainDiv" fxLayout="columns wrap" fxLayoutAlign="center center">
+    <div class="bookmarkMainDiv" fxLayout="columns wrap" fxLayoutAlign="center center">
+
+        <div *ngIf="dataLoad; else notShow" class="bookmarkContainer">
 
 
-  </div>
+            <!-- <div class="tableDiv"> -->
+            <div class="card">
+                <p-table styleClass="p-datatable-striped" [value]="myBookmarkList" [scrollable]="true" scrollHeight="600px" scrollDirection="both" id="bookmarkTable" #bookmarkTable >
+                    <ng-template pTemplate="header" >
+                        <tr>
+                            <th style="width:15vw;font-size: 14px;" [ngStyle]="{background:'var(--pink-600)'}" pSortableColumn="description">Description <p-sortIcon field="description"></p-sortIcon></th>
 
+                            <th style="width:15vw;font-size: 14px;" [ngStyle]="{background:'var(--pink-600)'}" pSortableColumn="category">Category <p-sortIcon field="category"></p-sortIcon></th>
+
+                            <th style="width:100%;font-size: 14px;" [ngStyle]="{background:'var(--pink-600)'}" pSortableColumn="siteURL">URL  <p-sortIcon field="category"></p-sortIcon></th>
+
+                        </tr>
+
+                        <tr>
+                            <th style="width:15vw;font-size: 14px;color:black;padding-left:10px;" [ngStyle]="{background:'var(--pink-600)'}">
+                                <input pInputText type="text" (input)="bookmarkTable.filter($event.target.value, 'description', 'contains')" [value]="bookmarkTable.filters['description']?.value" placeholder="Search by description" class="p-column-filter">
+                            </th>
+                            <th style="width:15vw;font-size: 14px;color:black;padding-left:10px;" [ngStyle]="{background:'var(--pink-600)'}">
+                                <input pInputText type="text" (input)="bookmarkTable.filter($event.target.value, 'category', 'contains')" [value]="bookmarkTable.filters['category']?.value" placeholder="Search by category" class="p-column-filter">
+                            </th>
+                            <th style="width:50vw;font-size: 14px;color:black;padding-left:10px;" [ngStyle]="{background:'var(--pink-600)'}">
+                                <input pInputText type="text" (input)="dt1.filter($event.target.value, 'category', 'contains')" [value]="bookmarkTable.filters['category']?.value" placeholder="Search by category" class="p-column-filter">
+                            </th>
+                          
+                        </tr>
+
+                    </ng-template>
+                    <ng-template pTemplate="body" let-myBookmarkList>
+                        <tr>
+
+                            <td style="width:15vw; border-color: grey;font-size: 12px; margin-left:10px;padding:5px">{{myBookmarkList.description}}</td>
+                            <td style="width:15vw; border-color: grey;font-size: 12px; margin-left:10px;padding:5px">{{myBookmarkList.category}}</td>
+                            <td style="width:50vw; border-color: grey;word-break:break-all;font-size: 12px; margin-left:10px;padding:5px"><a href="{{myBookmarkList.siteURL}}" target="_blank">{{myBookmarkList.siteURL}}</a>
+                            </td>
+
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+            <!-- </div> -->
+        </div>
+
+    </div>
+
+
+    <ng-template #notShow>
+        <div class="p-field p-col-12 p-md-6">
+            <p-progressSpinner [style]="{width: '300px', height: '300px'}" styleClass="custom-spinner" strokeWidth="8"
+                animationDuration=".5s"></p-progressSpinner>
+
+        </div>
+    </ng-template>
 
 </ng-template>
 <!-- ************************* SMALL SCREEN ************************* -->
 <!-- ************************* SMALL SCREEN ************************* -->
 
 <ng-template [ngIf]="smallScreen" [ngIfElse]="bigScreen">
+
+    <div *ngIf="dataLoad; else notShow">
+        <p>bookmarks works!</p>
+    </div>
+
+    <ng-template #notShow>
+        <div class="p-field p-col-12 p-md-6">
+            <p-progressSpinner [style]="{width: '200px', height: '200px'}" styleClass="custom-spinner" strokeWidth="8"
+                animationDuration=".5s"></p-progressSpinner>
+
+        </div>
+    </ng-template>
+
 </ng-template>
 
-<p>bookmarks works!</p>
+
+
+
+
+
 
 
 
@@ -32,7 +101,46 @@
                 <h4>{{message.summary}}</h4>
                 <p>{{message.detail}}</p>
             </div>
-            
+
         </div>
     </ng-template>
 </p-toast>
+
+
+
+<!-- <p-table [value]="myBookmarkList" responsiveLayout="scroll" rowHover="true"  [scrollable]="true" scrollHeight="60vh" >
+    <ng-template pTemplate="header" class="bookmarkTable">
+        <tr> -->
+<!-- <th [ngStyle]="{backgroundColor:'var(--pink-600)'}" pSortableColumn="description"
+                style="font-size:14px;padding:10px; margin:5px" style="width:200px">Description <p-sortIcon
+                    field="description"></p-sortIcon>
+            </th> -->
+<!-- 
+
+            <th [ngStyle]="{backgroundColor:'var(--pink-600)'}" 
+            style="font-size:14px;padding:10px; margin:5px" style="width:200px">Description </th>
+
+            <th [ngStyle]="{backgroundColor:'var(--pink-600)'}"
+                style="font-size:14px;padding:10px; margin:5px">Category</th>
+
+            <th [ngStyle]="{backgroundColor:'var(--pink-600)'}"
+                style="font-size:14px;padding:10px; margin:5px">URL</th>
+
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-myBookmarkList>
+        <tr [pSelectableRow]="myBookmarkList" [pSelectableRowIndex]="rowIndex" class="bookmarkTable" >
+
+            <td style="font-size:14px;padding:10px; margin:5px;line-height: 1" style="width:200px">
+                {{myBookmarkList.description}}</td>
+            <td style="font-size:12px;padding:10px; margin:5px;line-height: 1">
+                {{myBookmarkList.category}}</td>
+            <td style="font-size:12px;padding:10px; margin:5px;line-height: 1"  style="word-wrap: break-word"><a
+                    href="{{myBookmarkList.siteURL}}" target="_blank">{{myBookmarkList.siteURL}}</a>
+            </td>
+
+
+
+        </tr>
+    </ng-template>
+</p-table> -->

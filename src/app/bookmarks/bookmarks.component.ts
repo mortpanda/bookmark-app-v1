@@ -24,6 +24,13 @@ export class BookmarksComponent implements OnInit {
   myBookmarkDownloadUri;
   myAccessToken;
   apiCallResponse;
+  myBookmarkList =[];
+  myCategoryDownloadUri;
+  myCategory;
+  dataLoad: boolean;
+  arrCategory = [];
+  selectedBookmark=[];
+  bookmarkTableCols: string[] = ['description', 'category', 'siteURL'];
 
   constructor(
     public OktaGetTokenService: OktaGetTokenService,
@@ -42,6 +49,7 @@ export class BookmarksComponent implements OnInit {
   }
 
   async ngOnInit() {
+    this.dataLoad = false;
     this.strUserSession = await this.authService.isAuthenticated();
     console.log(this.strUserSession)
     switch (this.strUserSession == true) {
@@ -63,27 +71,65 @@ export class BookmarksComponent implements OnInit {
 
         this.myAccessToken = await this.OktaGetTokenService.GetAccessToken()
         this.myBookmarkDownloadUri = await this.myAccessToken.claims.boomark_app_uri;
+        this.myCategoryDownloadUri = await this.myAccessToken.claims.boomark_app_categories;
         // console.log(this.myBookmarkDownloadUri);
         await this.GetBookmarks(this.myUserID, this.myBookmarkDownloadUri);
+        await this.GetCategories(this.myUserID, this.myCategoryDownloadUri);
+
         switch (this.myBookmarkList.length) {
           case 0: {
-            this.apiCallResponse = "User Validation FAILED!";
+            this.apiCallResponse = "Bookmark download FAILED!";
             this.showError()
 
             break;
           }
           default: {
-            this.apiCallResponse = "User Validation Successful";
+            this.apiCallResponse = "Bookmark download Successful!";
             this.showSuccess();
             break;
           }
         }
-        console.log(this.apiCallResponse)
+
+        switch (this.myCategory.length) {
+          case 0: {
+            this.apiCallResponse = "Category download FAILED!";
+            this.showError()
+
+            break;
+          }
+          default: {
+            this.apiCallResponse = "Category download Successful!";
+            this.showSuccess();
+            break;
+          }
+        }
+        this.dataLoad = true;
+
         break;
     }
   }
 
-  myBookmarkList;
+  
+  async CreateCatArray(data) {
+    this.arrCategory = [...new Set(data.map(item => item.category))];
+    console.log(this.arrCategory);
+
+  }
+
+
+  async GetCategories(uid, url) {
+    let requestBody;
+    requestBody = {
+      uid: uid,
+    }
+    let requestURI;
+    requestURI = url;
+    this.myCategory = await this.OktaApiService.InvokeFlow(requestURI, requestBody);
+    console.log(this.myCategory)
+  }
+
+
+
   async GetBookmarks(uid, url) {
     let requestBody;
     requestBody = {

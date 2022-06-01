@@ -25,6 +25,9 @@ import {MessagesModule} from 'primeng/messages';
 import {MessageModule} from 'primeng/message';
 import {ToastModule} from 'primeng/toast';
 import {MessageService} from 'primeng/api';
+import {TableModule} from 'primeng/table';
+import {ProgressSpinnerModule} from 'primeng/progressspinner';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,6 +59,10 @@ import {MessageService} from 'primeng/api';
     MessagesModule,
     MessageModule,
     ToastModule,
+    TableModule,
+    ProgressSpinnerModule,
+    
+    
   ],
   providers: [MessageService],
   bootstrap: [AppComponent]
