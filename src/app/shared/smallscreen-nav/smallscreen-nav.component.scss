@@ -1,5 +1,7 @@
 .smallSCLogo{
   width:40vw!important;
+  border-radius: 5px!important;
+  box-shadow: 3px 9px 10px -2px black !important;
 }
 
 #smallNavbar{
@@ -10,5 +12,16 @@
   border-top: 2px solid black!important;
   border-left: 2px solid black!important;
   border-right: 1px solid black!important;
+  z-index: 9000!important;
+  border-radius: 0px!important;
+  
 }
 }
+#smallNavbar{
+.p-menubar.p-menubar-mobile-active .p-menubar-root-list {
+  display: flex;
+  flex-direction: column;
+  top: 100%;
+  left: 0;
+  z-index: 9000!important;
+}}

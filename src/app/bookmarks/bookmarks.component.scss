@@ -2,18 +2,14 @@
   // border-style: dotted;
   color: #ffffff;
   font-family: "ABCWhyte Book", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu",
-    "Cantarell", "Helvetica Neue", sans-serif !important;  
-
+    "Cantarell", "Helvetica Neue", sans-serif !important;
 }
 
 .bookmarkContainer {
-  // border-style: dotted;
- width: 80vw !important;
- height:auto!important;
- overflow: none!important;
+  width: 80vw !important;
+  height: auto !important;
+  overflow: none !important;
 }
-
-
 
 .bookmarkTable:hover {
   background: grey !important;
@@ -25,19 +21,74 @@
   color: black !important;
 }
 
+a:link {
+  color: #ffffff;
+}
+a:visited {
+  color: #ffffff;
+}
+a:hover {
+  color: #ffffff;
+}
+a:active {
+  color: #ffffff;
+}
+
+#bookmarkTable {
+  .p-datatable-scrollable {
+    .p-datatable-wrapper {
+      overflow: auto;
+      overflow-x: hidden;
+    }
+  }
+}
 
 
-a:link { color: #FFFFFF; }
-a:visited { color: #FFFFFF; }
-a:hover { color: #FFFFFF; }
-a:active { color: #FFFFFF; }
+.smallScreenBookmarks{
+  margin-top: 50px!important;
+  // z-index: 9000!important;
+  padding-left: 5px!important;
+  padding-right: 5px!important;
+}
 
-#bookmarkTable{
-.p-datatable-scrollable{
-   .p-datatable-wrapper {
-  
-  overflow: auto;
-  overflow-x: hidden;
-  
-   }
-}}
+// .smHead{
+//   z-index: 9000!important;
+// }
+
+.smSpinner{
+  margin-top: 50px!important; 
+}
+
+// .p-datatable .p-datatable-thead > tr > th {
+//   z-index: 9000!important; 
+// }
+
+
+// #smbookmarkTable{
+//   z-index: 9000!important;  
+// }
+
+// .p-datatable.p-datatable-scrollable > .p-datatable-wrapper > .p-datatable-table > .p-datatable-thead, .p-datatable.p-datatable-scrollable > .p-datatable-wrapper > .p-datatable-table > .p-datatable-tfoot {
+//   position: relative;
+//   z-index: 10!important;  
+// }
+
+// .p-datatable-scrollable .p-datatable-thead>tr, .p-datatable-scrollable .p-datatable-tbody>tr, .p-datatable-scrollable .p-datatable-tfoot>tr {
+//   position: relative;
+//   z-index: 10!important;  
+// }
+
+// .p-datatable-scrollable .p-datatable-thead>tr, .p-datatable-scrollable .p-datatable-tbody>tr, .p-datatable-scrollable .p-datatable-tfoot>tr {
+//   position: relative;
+//   z-index: 10!important;  
+// }
+
+// .p-datatable .p-datatable-thead > tr > th {
+//   position: relative;
+//   z-index: 10!important;  
+// }
+
+// .tr, .th{
+//   position: relative;
+//   z-index: 10!important;  
+// }

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { OktaSDKAuthService } from '../okta/okta-auth.service';
 import { OktaConfigService } from '../okta/okta-config.service';
+import {SaveBookmarkComponent} from '../save-bookmark/save-bookmark.component';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,8 @@ export class MenulistService {
   constructor(
     private OktaSDKAuthService: OktaSDKAuthService,
     private OktaConfigService: OktaConfigService,
+    private SaveBookmarkComponent:SaveBookmarkComponent,
+    
   ) { }
   
   menuItems = [
@@ -53,7 +56,9 @@ export class MenulistService {
       },
       icon: 'pi pi-bookmark-fill',
       style: 'font-size: 0.7rem',
-      routerLink: ['/bookmark']
+      command: () => {
+        this.openModal();
+      }
     },
   ]
 
@@ -64,4 +69,9 @@ export class MenulistService {
   async GoHome() {
     window.location.replace(this.OktaConfigService.strPostLogoutURL);
   }
+
+  async openModal(){
+   
+  }
+
 }

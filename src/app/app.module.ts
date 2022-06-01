@@ -27,6 +27,8 @@ import {ToastModule} from 'primeng/toast';
 import {MessageService} from 'primeng/api';
 import {TableModule} from 'primeng/table';
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
+import {DialogModule} from 'primeng/dialog';
+import { SaveBookmarkComponent } from './shared/save-bookmark/save-bookmark.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,7 @@ import {ProgressSpinnerModule} from 'primeng/progressspinner';
     SmallscreenNavComponent,
     StartComponent,
     BookmarksComponent,
+    SaveBookmarkComponent,
 
   ],
   imports: [
@@ -61,10 +64,11 @@ import {ProgressSpinnerModule} from 'primeng/progressspinner';
     ToastModule,
     TableModule,
     ProgressSpinnerModule,
+    DialogModule,
     
     
   ],
-  providers: [MessageService],
+  providers: [MessageService, SaveBookmarkComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

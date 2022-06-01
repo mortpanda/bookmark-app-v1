@@ -10,6 +10,7 @@ import { Router, RouterModule } from '@angular/router';
 import { MenulistService } from '../shared/menulist/menulist.service';
 import { MenuItem } from 'primeng/api';
 
+
 @Component({
   selector: 'app-start',
   templateUrl: './start.component.html',
@@ -31,6 +32,7 @@ export class StartComponent implements OnInit {
     private breakpointObserver: BreakpointObserver,
     private MenulistService:MenulistService,
     private Router:Router,
+    
   ) {
     breakpointObserver.observe([
       Breakpoints.XSmall,
@@ -64,6 +66,8 @@ export class StartComponent implements OnInit {
     
 
   }
+
+  
 
   // async GoToHome(){
   //   await this.authService.closeSession();

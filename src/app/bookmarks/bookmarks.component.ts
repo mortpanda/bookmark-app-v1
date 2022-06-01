@@ -152,5 +152,10 @@ export class BookmarksComponent implements OnInit {
     this.messageService.clear('c');
   }
 
+  
+
+  
+
+
 
 }
