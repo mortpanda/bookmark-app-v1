@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { OktaSDKAuthService } from '../okta/okta-auth.service';
 import { OktaConfigService } from '../okta/okta-config.service';
-import { TestComponent } from '../../test/test.component';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import {SaveBookmarkComponent} from '../save-bookmark/save-bookmark.component';
 
 @Injectable({
   providedIn: 'root'
@@ -11,10 +12,21 @@ export class MenulistService {
   constructor(
     private OktaSDKAuthService: OktaSDKAuthService,
     private OktaConfigService: OktaConfigService,
-    
+    private _matdialog: MatDialog,
+    private SaveBookmarkComponent:SaveBookmarkComponent,
     
   ) { }
   
+  saveBookmark(){
+    const DialogConfig = new MatDialogConfig();
+    DialogConfig.disableClose = false;
+    DialogConfig.id = "savebookmark-modal-component";
+    DialogConfig.height = "400px";
+    DialogConfig.width = "600px";
+    const modalDialog = this._matdialog.open(SaveBookmarkComponent, DialogConfig);
+  }
+
+
   menuItems = [
     {
       label: 'メニュー',
@@ -48,7 +60,7 @@ export class MenulistService {
       icon: 'pi pi-save',
       style: 'font-size: 0.7rem',
       command: () => {
-        // this.showDialog();
+        this.saveBookmark();
       }
     },
     {

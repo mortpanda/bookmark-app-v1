@@ -12,15 +12,18 @@
                     scrollHeight="600px" scrollDirection="both" id="bookmarkTable" #bookmarkTable>
                     <ng-template pTemplate="header">
                         <tr>
-                            <th style="width:15vw;font-size: 14px;" [ngStyle]="{background:'var(--pink-600)'}"
+                            <th style="width:15vw;font-size: 16px;" [ngStyle]="{background:'var(--pink-600)'}"
                                 pSortableColumn="description">Description <p-sortIcon field="description"></p-sortIcon>
                             </th>
+                            <!-- <th style="width:15vw;font-size: 14px; background-color:transparent; " 
+                                pSortableColumn="description">Description <p-sortIcon field="description"></p-sortIcon>
+                            </th> -->
 
-                            <th style="width:15vw;font-size: 14px;" [ngStyle]="{background:'var(--pink-600)'}"
+                            <th style="width:15vw;font-size: 16px;" [ngStyle]="{background:'var(--pink-600)'}"
                                 pSortableColumn="category">Category <p-sortIcon field="category"></p-sortIcon>
                             </th>
 
-                            <th style="width:100%;font-size: 14px;" [ngStyle]="{background:'var(--pink-600)'}"
+                            <th style="width:100%;font-size: 16px;" [ngStyle]="{background:'var(--pink-600)'}"
                                 pSortableColumn="siteURL">URL <p-sortIcon field="category"></p-sortIcon>
                             </th>
 
@@ -55,12 +58,12 @@
                     <ng-template pTemplate="body" let-myBookmarkList>
                         <tr>
 
-                            <td style="width:15vw; border-color: grey;font-size: 12px; margin-left:5px;padding:5px">
+                            <td style="width:15vw; border-color: grey;font-size: 14px; margin-left:5px;padding:5px">
                                 {{myBookmarkList.description}}</td>
-                            <td style="width:15vw; border-color: grey;font-size: 12px; margin-left:5px;padding:5px">
+                            <td style="width:15vw; border-color: grey;font-size: 14px; margin-left:5px;padding:5px">
                                 {{myBookmarkList.category}}</td>
                             <td
-                                style="width:50vw; border-color: grey;word-break:break-all;font-size: 12px; margin-left:5px;padding:5px">
+                                style="width:50vw; border-color: grey;word-break:break-all;font-size: 14px; margin-left:5px;padding:5px">
                                 <a href="{{myBookmarkList.siteURL}}" target="_blank">{{myBookmarkList.siteURL}}</a>
                             </td>
 

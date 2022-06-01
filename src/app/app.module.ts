@@ -3,8 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NbThemeModule, NbLayoutModule } from '@nebular/theme';
-import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { LandingComponent } from './landing/landing.component';
 import {DockModule} from 'primeng/dock';
@@ -27,8 +25,9 @@ import {ToastModule} from 'primeng/toast';
 import {MessageService} from 'primeng/api';
 import {TableModule} from 'primeng/table';
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
-import {DialogModule} from 'primeng/dialog';
-
+import { SaveBookmarkComponent } from './shared/save-bookmark/save-bookmark.component';
+import { MatDialogModule } from '@angular/material/dialog'; 
+import {InputTextModule} from 'primeng/inputtext';
 
 
 @NgModule({
@@ -40,6 +39,7 @@ import {DialogModule} from 'primeng/dialog';
     SmallscreenNavComponent,
     StartComponent,
     BookmarksComponent,
+    SaveBookmarkComponent,
     
     
 
@@ -48,9 +48,6 @@ import {DialogModule} from 'primeng/dialog';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    NbThemeModule.forRoot({ name: 'dark' }),
-    NbLayoutModule,
-    NbEvaIconsModule,
     DockModule,
     MenuModule,
     ToolbarModule,
@@ -66,12 +63,13 @@ import {DialogModule} from 'primeng/dialog';
     ToastModule,
     TableModule,
     ProgressSpinnerModule,
-    DialogModule,
+    MatDialogModule,
+    InputTextModule,
     
     
     
   ],
-  providers: [MessageService, ],
+  providers: [MessageService,SaveBookmarkComponent ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
