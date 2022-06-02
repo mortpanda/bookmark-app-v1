@@ -10,7 +10,6 @@ import { Router, RouterModule } from '@angular/router';
 import { MenulistService } from '../shared/menulist/menulist.service';
 import { MenuItem } from 'primeng/api';
 
-
 @Component({
   selector: 'app-start',
   templateUrl: './start.component.html',
@@ -23,16 +22,17 @@ export class StartComponent implements OnInit {
   strThisUser;
   smallScreen: boolean;
   strFullName;
-  appNav : MenuItem[];
+  appNav: MenuItem[];
+  
   constructor(
     public OktaGetTokenService: OktaGetTokenService,
     public OktaSDKAuthService: OktaSDKAuthService,
     public OktaConfigService: OktaConfigService,
     public OktaWidgetService: OktaWidgetService,
     private breakpointObserver: BreakpointObserver,
-    private MenulistService:MenulistService,
-    private Router:Router,
-    
+    private MenulistService: MenulistService,
+    private Router: Router,
+
   ) {
     breakpointObserver.observe([
       Breakpoints.XSmall,
@@ -41,10 +41,10 @@ export class StartComponent implements OnInit {
       this.smallScreen = result.matches;
     });
     this.appNav = this.MenulistService.appNav;
-   }
+  }
 
   async ngOnInit() {
-    
+
     this.strUserSession = await this.authService.isAuthenticated();
     console.log(this.strUserSession)
     switch (this.strUserSession == true) {
@@ -58,19 +58,14 @@ export class StartComponent implements OnInit {
           .catch((err) => {
             console.log(err);
             window.location.replace(this.OktaConfigService.strPostLogoutURL);
-           })
-           this.strFullName = this.strThisUser.name;
-           console.log(this.strThisUser)
+          })
+        this.strFullName = this.strThisUser.name;
+        console.log(this.strThisUser)
+
+        
         break;
     }
 
   }
-
- 
-
-  // async GoToHome(){
-  //   await this.authService.closeSession();
-  //   this.Router.navigate(['/home']);
-  // }
 
 }

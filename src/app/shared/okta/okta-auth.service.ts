@@ -22,11 +22,7 @@ export class OktaSDKAuthService {
         issuer: this.OktaConfigService.strIssuer,
         redirectUri: this.OktaConfigService.strRedirectURL,
         postLogoutRedirectUri:this.OktaConfigService.strPostLogoutURL,
-        // responseMode: this.OktaConfigService.strResponseMode,
-        // responseType: this.OktaConfigService.strResponseType,
         scopes: this.OktaConfigService.strScope,
-        // prompt: this.OktaConfigService.strPrompt,
-
     };
 
     OktaSDKAuthClient = new OktaAuth(this.config);    

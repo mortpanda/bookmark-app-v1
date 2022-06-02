@@ -21,15 +21,15 @@ export class BookmarksComponent implements OnInit {
   smallScreen: boolean;
   strFullName;
   myUserID;
-  myBookmarkDownloadUri;
+  myBookmarkUri;
   myAccessToken;
   apiCallResponse;
-  myBookmarkList =[];
+  myBookmarkList = [];
   myCategoryDownloadUri;
   myCategory;
   dataLoad: boolean;
   arrCategory = [];
-  selectedBookmark=[];
+  selectedBookmark = [];
   bookmarkTableCols: string[] = ['description', 'category', 'siteURL'];
 
   constructor(
@@ -65,17 +65,10 @@ export class BookmarksComponent implements OnInit {
             window.location.replace(this.OktaConfigService.strPostLogoutURL);
           })
         this.strFullName = await this.strThisUser.name;
-        // await console.log(this.strThisUser)
         this.myUserID = await this.strThisUser.sub;
-        // await console.log(this.myUserID);
-
         this.myAccessToken = await this.OktaGetTokenService.GetAccessToken()
-        this.myBookmarkDownloadUri = await this.myAccessToken.claims.boomark_app_uri;
-        this.myCategoryDownloadUri = await this.myAccessToken.claims.boomark_app_categories;
-        // console.log(this.myBookmarkDownloadUri);
-        await this.GetBookmarks(this.myUserID, this.myBookmarkDownloadUri);
-        await this.GetCategories(this.myUserID, this.myCategoryDownloadUri);
-
+        this.myBookmarkUri = await this.myAccessToken.claims.boomark_app_uri;
+        await this.GetBookmarks(this.myUserID, this.myBookmarkUri,"download");
         switch (this.myBookmarkList.length) {
           case 0: {
             this.apiCallResponse = "Bookmark download FAILED!";
@@ -89,54 +82,23 @@ export class BookmarksComponent implements OnInit {
             break;
           }
         }
-
-        switch (this.myCategory.length) {
-          case 0: {
-            this.apiCallResponse = "Category download FAILED!";
-            this.showError()
-
-            break;
-          }
-          default: {
-            this.apiCallResponse = "Category download Successful!";
-            this.showSuccess();
-            break;
-          }
-        }
         this.dataLoad = true;
-
         break;
     }
   }
 
-  
-  async CreateCatArray(data) {
-    this.arrCategory = [...new Set(data.map(item => item.category))];
-    console.log(this.arrCategory);
 
-  }
-
-
-  async GetCategories(uid, url) {
+  async GetBookmarks(uid, url, action?) {
     let requestBody;
     requestBody = {
       uid: uid,
+      action:action,
     }
     let requestURI;
     requestURI = url;
-    this.myCategory = await this.OktaApiService.InvokeFlow(requestURI, requestBody);
-    console.log(this.myCategory)
-  }
+    let requestAction;
+    requestAction = action;
 
-
-
-  async GetBookmarks(uid, url) {
-    let requestBody;
-    requestBody = {
-      uid: uid,
-    }
-    let requestURI;
-    requestURI = url;
     this.myBookmarkList = await this.OktaApiService.InvokeFlow(requestURI, requestBody);
     console.log(this.myBookmarkList)
   }
@@ -151,11 +113,5 @@ export class BookmarksComponent implements OnInit {
   onReject() {
     this.messageService.clear('c');
   }
-
-  
-
-  
-
-
 
 }

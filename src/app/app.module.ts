@@ -29,6 +29,11 @@ import { SaveBookmarkComponent } from './shared/save-bookmark/save-bookmark.comp
 import { MatDialogModule } from '@angular/material/dialog'; 
 import {InputTextModule} from 'primeng/inputtext';
 import {InputTextareaModule} from 'primeng/inputtextarea';
+import { FormsModule }   from '@angular/forms';
+import {ProgressBarModule} from 'primeng/progressbar';
+import {DropdownModule} from 'primeng/dropdown';
+import {DividerModule} from 'primeng/divider';
+
 
 @NgModule({
   declarations: [
@@ -66,8 +71,10 @@ import {InputTextareaModule} from 'primeng/inputtextarea';
     MatDialogModule,
     InputTextModule,
     InputTextareaModule,
-    
-    
+    FormsModule,
+    ProgressBarModule,
+    DropdownModule,
+    DividerModule,
     
   ],
   providers: [MessageService,SaveBookmarkComponent ],

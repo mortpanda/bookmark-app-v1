@@ -21,7 +21,7 @@ export class MenulistService {
     const DialogConfig = new MatDialogConfig();
     DialogConfig.disableClose = false;
     DialogConfig.id = "savebookmark-modal-component";
-    DialogConfig.height = "400px";
+    DialogConfig.height = "auto";
     DialogConfig.width = "600px";
     const modalDialog = this._matdialog.open(SaveBookmarkComponent, DialogConfig);
   }

@@ -1,12 +1,8 @@
 <ng-template #bigScreen>
     <div class="userName">{{strFullName}}</div>
-
     <div class="bookmarkMainDiv" fxLayout="columns wrap" fxLayoutAlign="center center">
-
         <div *ngIf="dataLoad; else notShow" class="bookmarkContainer">
 
-
-            <!-- <div class="tableDiv"> -->
             <div class="card">
                 <p-table styleClass="p-datatable-striped" [value]="myBookmarkList" [scrollable]="true"
                     scrollHeight="600px" scrollDirection="both" id="bookmarkTable" #bookmarkTable>
@@ -15,10 +11,6 @@
                             <th style="width:15vw;font-size: 16px;" [ngStyle]="{background:'var(--primary-800)'}"
                                 pSortableColumn="description">Description <p-sortIcon field="description"></p-sortIcon>
                             </th>
-                            <!-- <th style="width:15vw;font-size: 14px; background-color:transparent; " 
-                                pSortableColumn="description">Description <p-sortIcon field="description"></p-sortIcon>
-                            </th> -->
-
                             <th style="width:15vw;font-size: 16px;" [ngStyle]="{background:'var(--primary-800)'}"
                                 pSortableColumn="category">Category <p-sortIcon field="category"></p-sortIcon>
                             </th>
@@ -46,10 +38,6 @@
                             </th>
                             <th style="width:50vw;font-size: 14px;color:black;padding-left:10px;"
                                 [ngStyle]="{background:'var(--primary-800)'}">
-                                <!-- <input pInputText type="text"
-                                    (input)="dt1.filter($event.target.value, 'category', 'contains')"
-                                    [value]="bookmarkTable.filters['category']?.value" placeholder="Search by url"
-                                    class="p-column-filter"> -->
                             </th>
 
                         </tr>
@@ -71,7 +59,6 @@
                     </ng-template>
                 </p-table>
             </div>
-            <!-- </div> -->
         </div>
 
     </div>
@@ -114,7 +101,7 @@
     <div *ngIf="dataLoad; else notShow" class="smallScreenBookmarks">
         <div class="card">
             <p-table styleClass="p-datatable-striped" [value]="myBookmarkList" [scrollable]="true" scrollHeight="800px"
-                scrollDirection="both" id="smbookmarkTable" >
+                scrollDirection="both" id="smbookmarkTable">
                 <ng-template pTemplate="header" class="smHead">
                     <tr>
                         <th style="width:30vw;font-size: 12px; " [ngStyle]="{background:'var(--pink-600)'}"
