@@ -28,7 +28,7 @@ import {ProgressSpinnerModule} from 'primeng/progressspinner';
 import { SaveBookmarkComponent } from './shared/save-bookmark/save-bookmark.component';
 import { MatDialogModule } from '@angular/material/dialog'; 
 import {InputTextModule} from 'primeng/inputtext';
-
+import {InputTextareaModule} from 'primeng/inputtextarea';
 
 @NgModule({
   declarations: [
@@ -65,6 +65,7 @@ import {InputTextModule} from 'primeng/inputtext';
     ProgressSpinnerModule,
     MatDialogModule,
     InputTextModule,
+    InputTextareaModule,
     
     
     
