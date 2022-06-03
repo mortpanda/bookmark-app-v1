@@ -164,8 +164,8 @@ export class SaveBookmarkComponent implements OnInit {
   async CreateBookmark(uid, url, action, cat, struri, desc) {
     if (this.urlErrorCheck == true && this.catErrorCheck == true && this.descErrorCheck == true) {
 
-      let requestAction;
-      requestAction = action;
+      // let requestAction;
+      // requestAction = action;
 
       let requestURI;
       requestURI = url;
