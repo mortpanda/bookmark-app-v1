@@ -34,15 +34,10 @@ export class OktaWidgetService {
     const OktaLang = this.OktaConfig.strLang;
     const OktaRedirect = redirecturi;
     const OktaBrand = this.OktaConfig.strBrand;
-    const OktaPostlogoutURI = this.OktaConfig.strPostLogoutURL;
     const OktaIssuer = this.OktaConfig.strIssuer;
     const OktaScope = this.OktaConfig.strScope;
-    const OktaResType = this.OktaConfig.strResponseType;
-    const OktaResMode = this.OktaConfig.strPrompt;
-    const OktaPKCE = this.OktaConfig.strPkce;
-    // const OktaWidgetLogo = this.OktaConfig.strLogo;
     var oktaSignIn = new OktaSignIn({
-      // logo: OktaWidgetLogo,
+      flow:"login",
       clientId: OktaClientID,
       baseUrl: OktaBaseURI,
       language: OktaLang,
@@ -50,22 +45,11 @@ export class OktaWidgetService {
       colors: {
         brand: OktaBrand,
       },
-      postLogoutRedirectUri: OktaPostlogoutURI,
-      features: {
-        rememberMe: false,
-        selfServiceUnlock: false,
-        hideSignOutLinkInMFA: false,
-
-      },
       authParams: {
         issuer: OktaIssuer,
-        responseMode: OktaResMode,
-        responseType: OktaResType,
         scopes: OktaScope,
-        pkce: OktaPKCE,
-        prompt: OktaResMode
       },
-      useInteractionCodeFlow: 'true',
+      useInteractionCodeFlow: true,
 
     });
     console.log(OktaScope);
@@ -112,8 +96,6 @@ export class OktaWidgetService {
       console.error(err);
       return false;
     });
-    //console.log('MFA Status : ' + myMFADone)
-    // this.strMFAStatus = myMFADone;
   }
 
 
@@ -123,11 +105,8 @@ export class OktaWidgetService {
     const OktaLang = this.OktaConfig.strLang;
     const OktaRedirect = this.OktaConfig.strRedirectURL;
     const OktaBrand = this.OktaConfig.strBrand;
-    const OktaPostlogoutURI = this.OktaConfig.strPostLogoutURL;
     const OktaIssuer = this.OktaConfig.strIssuer;
     const OktaScope = this.OktaConfig.strScope;
-    const OktaResType = this.OktaConfig.strResponseType;
-    const OktaResMode = this.OktaConfig.strResponseMode;
     var oktaSignIn = new OktaSignIn({
       clientId: OktaClientID,
       baseUrl: OktaBaseURI,
@@ -136,15 +115,11 @@ export class OktaWidgetService {
       colors: {
         brand: OktaBrand,
       },
-      postLogoutRedirectUri: OktaPostlogoutURI,
       authParams: {
         issuer: OktaIssuer,
-        responseMode: 'fragment',
-        responseType: OktaResType,
         scopes: OktaScope,
-        pkce: false,
-        prompt: OktaResMode
       },
+      useInteractionCodeFlow: true,
     });
     oktaSignIn.remove();
 
