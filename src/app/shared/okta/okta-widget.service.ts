@@ -28,7 +28,7 @@ export class OktaWidgetService {
     return authenticated;
   }
 
-  async login(redirecturi, logo: boolean) {
+  async login(redirecturi) {
     const OktaClientID = this.OktaConfig.strClientID;
     const OktaBaseURI = this.OktaConfig.strBaseURI;
     const OktaLang = this.OktaConfig.strLang;
@@ -37,7 +37,7 @@ export class OktaWidgetService {
     const OktaIssuer = this.OktaConfig.strIssuer;
     const OktaScope = this.OktaConfig.strScope;
     var oktaSignIn = new OktaSignIn({
-      flow:"login",
+      //flow:"signup",
       clientId: OktaClientID,
       baseUrl: OktaBaseURI,
       language: OktaLang,
