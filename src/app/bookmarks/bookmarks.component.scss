@@ -11,27 +11,27 @@
   overflow: none !important;
 }
 
-.bookmarkTable:hover {
-  background: grey !important;
-  color: black !important;
-}
+// .bookmarkTable:hover {
+//   background: black !important;
+//   color: #FFFFFF !important;
+// }
 
-.bookmarkTable::selection {
-  background: grey !important;
-  color: black !important;
-}
+// .bookmarkTable::selection {
+//   background: black !important;
+//   color: #FFFFFF !important;
+// }
 
 a:link {
-  color: #ffffff;
+  color: #6e6e78;
 }
 a:visited {
-  color: #ffffff;
+  color: #6e6e78;
 }
 a:hover {
-  color: #ffffff;
+  color: #6e6e78;
 }
 a:active {
-  color: #ffffff;
+  color: #6e6e78;
 }
 
 #bookmarkTable {

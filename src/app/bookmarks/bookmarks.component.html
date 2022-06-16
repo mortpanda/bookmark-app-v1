@@ -8,36 +8,33 @@
                     scrollHeight="600px" scrollDirection="both" id="bookmarkTable" #bookmarkTable>
                     <ng-template pTemplate="header">
                         <tr>
-                            <th style="width:15vw;font-size: 16px;" [ngStyle]="{background:'var(--primary-800)'}"
-                                pSortableColumn="description">Description <p-sortIcon field="description"></p-sortIcon>
+                            <th style="width:15vw;font-size: 16px;" pSortableColumn="description">Description
+                                <p-sortIcon field="description"></p-sortIcon>
                             </th>
-                            <th style="width:15vw;font-size: 16px;" [ngStyle]="{background:'var(--primary-800)'}"
-                                pSortableColumn="category">Category <p-sortIcon field="category"></p-sortIcon>
+                            <th style="width:15vw;font-size: 16px;" pSortableColumn="category">Category <p-sortIcon
+                                    field="category"></p-sortIcon>
                             </th>
-
-                            <th style="width:100%;font-size: 16px;" [ngStyle]="{background:'var(--primary-800)'}"
-                                pSortableColumn="siteURL">URL <p-sortIcon field="category"></p-sortIcon>
+                            <th style="width:100%;font-size: 16px;" pSortableColumn="siteURL">URL <p-sortIcon
+                                    field="category"></p-sortIcon>
                             </th>
-
                         </tr>
 
                         <tr>
-                            <th style="width:15vw;font-size: 12px;color:black;padding-left:10px; padding-top:5px; padding-bottom:5px;"
-                                [ngStyle]="{background:'var(--primary-800)'}">
+                            <th
+                                style="width:15vw;font-size: 12px;color:black;padding-left:10px; padding-top:5px; padding-bottom:5px;">
                                 <input pInputText type="text" style="padding:5px"
                                     (input)="bookmarkTable.filter($event.target.value, 'description', 'contains')"
                                     [value]="bookmarkTable.filters['description']?.value"
                                     placeholder="Search by description" class="p-column-filter">
                             </th>
-                            <th style="width:15vw;font-size: 12px;color:black;padding-left:10px; padding-top:5px; padding-bottom:5px;"
-                                [ngStyle]="{background:'var(--primary-800)'}">
+                            <th
+                                style="width:15vw;font-size: 12px;color:black;padding-left:10px; padding-top:5px; padding-bottom:5px;">
                                 <input pInputText type="text" style="padding:5px"
                                     (input)="bookmarkTable.filter($event.target.value, 'category', 'contains')"
                                     [value]="bookmarkTable.filters['category']?.value" placeholder="Search by category"
                                     class="p-column-filter">
                             </th>
-                            <th style="width:50vw;font-size: 14px;color:black;padding-left:10px;"
-                                [ngStyle]="{background:'var(--primary-800)'}">
+                            <th style="width:50vw;font-size: 14px;color:black;padding-left:10px;">
                             </th>
 
                         </tr>
